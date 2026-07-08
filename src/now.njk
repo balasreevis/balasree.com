@@ -1,0 +1,33 @@
+---
+layout: base.njk
+title: Now — balasree
+permalink: /now/
+---
+
+<section class="section now">
+  <span class="blob blob--grape" aria-hidden="true"></span>
+  <div class="container now-inner">
+    <article class="now-page">
+      {% if now.eyebrow %}<p class="eyebrow">{{ now.eyebrow }}</p>{% endif %}
+      <h1>{{ now.title }}</h1>
+      <p class="now-updated muted">{{ now.date | nowDate }}</p>
+
+      <p class="lead">{{ now.intro }}</p>
+
+      {% for block in now.blocks %}
+        <div class="now-block">
+          <h2>{{ block.heading }}</h2>
+          <ul class="now-list">
+            {% for item in block.items %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+
+      {% if now.back %}
+        <p class="now-back"><a href="{{ now.back.href }}">{{ now.back.label }}</a></p>
+      {% endif %}
+    </article>
+  </div>
+</section>

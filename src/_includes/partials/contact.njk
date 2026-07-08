@@ -1,0 +1,16 @@
+<section class="section contact" id="contact">
+  <div class="container contact-inner">
+    <h2>{{ portfolio.contact.title }}</h2>
+    {% if portfolio.contact.body %}<p class="lead">{{ portfolio.contact.body }}</p>{% endif %}
+    {% if portfolio.contact.email %}
+      <p><a class="btn" href="mailto:{{ portfolio.contact.email }}">{{ portfolio.contact.email }}</a></p>
+    {% endif %}
+    {% if portfolio.contact.links %}
+      <ul class="social">
+        {% for link in portfolio.contact.links %}
+          <li><a href="{{ link.href }}">{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</section>

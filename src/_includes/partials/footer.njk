@@ -1,0 +1,12 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="muted">&copy; {{ portfolio.footer.copyright }}</p>
+    {% if portfolio.contact.links %}
+      <ul class="social">
+        {% for link in portfolio.contact.links %}
+          <li><a href="{{ link.href }}">{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</footer>

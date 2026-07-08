@@ -1,0 +1,38 @@
+---
+layout: base.njk
+title: Journey — balasree
+permalink: /journey/
+---
+
+<section class="journey">
+  <span class="blob blob--grape" aria-hidden="true"></span>
+  <div class="container journey-inner">
+    <header class="journey-head">
+      {% if journey.eyebrow %}<p class="eyebrow">{{ journey.eyebrow }}</p>{% endif %}
+      <h1>{{ journey.title }}</h1>
+      <p class="lead">{{ journey.intro }}</p>
+    </header>
+
+    <ol class="timeline">
+      {% for entry in collections.journeyEntries %}
+        <li class="timeline-item">
+          <div class="timeline-year">{{ entry.data.date | journeyDate }}</div>
+          <div class="timeline-dot{% if entry.data.accent %} timeline-dot--{{ entry.data.accent }}{% endif %}" aria-hidden="true"></div>
+          <div class="timeline-content">
+            {% if entry.data.image %}
+              <div class="timeline-media">
+                <img src="{{ entry.data.image }}" alt="{{ entry.data.imageAlt or '' }}" loading="lazy" />
+              </div>
+            {% endif %}
+            <h2>{{ entry.data.title }}</h2>
+            {{ entry.templateContent | safe }}
+          </div>
+        </li>
+      {% endfor %}
+    </ol>
+
+    {% if journey.back %}
+      <p class="now-back"><a href="{{ journey.back.href }}">{{ journey.back.label }}</a></p>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,12 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">{{ site.name }}</a>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        {% for item in portfolio.nav.items %}
+          <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

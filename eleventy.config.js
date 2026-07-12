@@ -3,6 +3,7 @@ import matter from "gray-matter";
 export default function (eleventyConfig) {
   // Copy static assets straight through
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
 
   // Let .md files work as global data files (src/_data/**/*.md), so the
   // owner can edit front matter instead of JSON syntax.

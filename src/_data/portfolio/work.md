@@ -1,4 +1,4 @@
 ---
-title: Lorem ipsum
-subtitle: Sed do eiusmod tempor incididunt ut labore.
+title: Snippets
+subtitle: Take a look at some moments from my life
 ---

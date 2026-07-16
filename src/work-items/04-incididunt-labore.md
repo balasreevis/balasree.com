@@ -1,8 +1,8 @@
 ---
 order: 4
-title: Incididunt labore
-category: Lorem ipsum
-image: "http://dummy.tcdw.org/900/700/?4"
+title: With Matt Falliot
+category: Hong kong
+image: "/assets/images/work-4.jpg"
 imageAlt: Lorem ipsum project placeholder
 href: "#"
 ---

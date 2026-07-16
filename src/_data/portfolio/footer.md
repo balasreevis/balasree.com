@@ -1,3 +1,3 @@
 ---
-copyright: Lorem ipsum dolor sit amet
+copyright: Balasree Viswanathan 2026
 ---

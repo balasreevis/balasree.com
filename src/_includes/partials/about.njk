@@ -6,7 +6,10 @@
     <div class="about-text">
       <h2>{{ portfolio.about.title }}</h2>
       {% for para in portfolio.about.body %}
-        <p>{{ para }}</p>
+        <p>
+          {{ para }}
+          {%- if loop.last and portfolio.about.link %} <a href="{{ portfolio.about.link.href }}">{{ portfolio.about.link.label }}</a>.{% endif -%}
+        </p>
       {% endfor %}
       {% if portfolio.about.journeyCta %}
         <a class="btn" href="{{ portfolio.about.journeyCta.href }}">{{ portfolio.about.journeyCta.label }}</a>

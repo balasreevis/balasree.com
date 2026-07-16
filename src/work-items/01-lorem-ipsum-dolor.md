@@ -1,8 +1,8 @@
 ---
 order: 1
-title: Lorem ipsum dolor
-category: Lorem ipsum
-image: "http://dummy.tcdw.org/900/700/"
+title: Navarasa
+category: Kerala
+image: "/assets/images/work-1.jpg"
 imageAlt: Lorem ipsum project placeholder
 href: "#"
 ---

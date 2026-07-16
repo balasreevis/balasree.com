@@ -1,10 +1,10 @@
 ---
-title: Lorem ipsum dolor
-body: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-email: hello@example.com
+title: Let's get in touch
+body: got any project, queries or invites for me? send them my way 
+email: balasree.vis@gmail.com
 links:
   - label: Instagram
     href: http://instagram.com/blala_land/
   - label: LinkedIn
-    href: "#"
+    href: https://www.linkedin.com/in/balasree-v-27ba7577/
 ---

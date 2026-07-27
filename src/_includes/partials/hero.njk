@@ -1,16 +1,14 @@
 <section class="hero">
-  <span class="blob blob--sun" aria-hidden="true"></span>
-  <span class="blob blob--teal" aria-hidden="true"></span>
-  <div class="container hero-inner">
+  <div class="hero-media">
+    <img src="{{ portfolio.hero.image }}" alt="{{ portfolio.hero.imageAlt }}" loading="eager" />
+  </div>
+  <div class="container">
     <div class="hero-text">
       <h1>{{ portfolio.hero.title }}</h1>
       <p class="lead">{{ portfolio.hero.subtitle }}</p>
       {% if portfolio.hero.cta %}
         <a class="btn" href="{{ portfolio.hero.cta.href }}">{{ portfolio.hero.cta.label }}</a>
       {% endif %}
-    </div>
-    <div class="hero-media">
-      <img src="{{ portfolio.hero.image }}" alt="{{ portfolio.hero.imageAlt }}" loading="eager" />
     </div>
   </div>
 </section>

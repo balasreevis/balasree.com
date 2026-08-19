@@ -1,0 +1,24 @@
+---
+layout: base.njk
+---
+
+<section class="section blog-post">
+  <div class="container blog-post-inner">
+    <article>
+      <p class="timeline-year">{{ date | journeyDate }}</p>
+      <h1>{{ title }}</h1>
+      {% if image %}
+        <div class="blog-post-media">
+          <img src="{{ image }}" alt="{{ imageAlt or '' }}" loading="lazy" />
+        </div>
+      {% endif %}
+      <div class="blog-post-body">
+        {{ content | safe }}
+      </div>
+    </article>
+
+    {% if blog.back %}
+      <p class="now-back"><a href="/blog/">{{ blog.back.label }}</a></p>
+    {% endif %}
+  </div>
+</section>

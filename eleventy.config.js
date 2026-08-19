@@ -1,6 +1,9 @@
 import matter from "gray-matter";
+import pluginRss from "@11ty/eleventy-plugin-rss";
 
 export default function (eleventyConfig) {
+  eleventyConfig.addPlugin(pluginRss);
+
   // Copy static assets straight through
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
@@ -34,6 +37,13 @@ export default function (eleventyConfig) {
     return date.toLocaleDateString("en-US", options);
   });
 
+  // Trim text to a max length for meta tags, breaking on a word boundary.
+  eleventyConfig.addFilter("truncate", (value, maxLength = 160) => {
+    if (!value || value.length <= maxLength) return value;
+    const cut = value.slice(0, maxLength + 1);
+    return cut.slice(0, cut.lastIndexOf(" ")).trim() + "…";
+  });
+
   // Journey timeline entries, newest first (supports multiple entries per
   // year/month). Each entry is a single Markdown file in src/journey-entries/
   // with a `date` of "YYYY", "YYYY-MM", or "YYYY-MM-DD" — add a file to add
@@ -51,6 +61,15 @@ export default function (eleventyConfig) {
     return collectionApi
       .getFilteredByTag("workItem")
       .sort((a, b) => Number(a.data.order) - Number(b.data.order));
+  });
+
+  // Blog posts, newest first. Each post is a single Markdown file in
+  // src/blog-posts/ with a `date` of "YYYY-MM" or "YYYY-MM-DD" and its own
+  // `permalink` — add a file to add a post, no code changes needed.
+  eleventyConfig.addCollection("blogPosts", (collectionApi) => {
+    return collectionApi
+      .getFilteredByTag("blogPost")
+      .sort((a, b) => String(b.data.date).localeCompare(String(a.data.date)));
   });
 
   return {

@@ -1,9 +1,11 @@
 ---
 items:
+  - label: Moments
+    href: "/#moments"
+  - label: About Me
+    href: "/#about"
+  - label: Blog
+    href: "/blog/"
   - label: Work with me
-    href: "#work"
-  - label: About
-    href: "#about"
-  - label: Contact
-    href: "#contact"
+    href: "/#contact"
 ---

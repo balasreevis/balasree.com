@@ -1,0 +1,5 @@
+{
+  "tags": ["blogPost"],
+  "layout": "blog-post.njk",
+  "eleventyExcludeFromCollections": false
+}

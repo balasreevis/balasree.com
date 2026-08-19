@@ -1,17 +1,17 @@
-<section class="section work" id="work">
+<section class="section moments" id="moments">
   <div class="container">
     <header class="section-head">
-      <h2>{{ portfolio.work.title }}</h2>
-      {% if portfolio.work.subtitle %}<p class="muted">{{ portfolio.work.subtitle }}</p>{% endif %}
+      <h2>{{ portfolio.moments.title }}</h2>
+      {% if portfolio.moments.subtitle %}<p class="muted">{{ portfolio.moments.subtitle }}</p>{% endif %}
     </header>
-    <ul class="work-grid">
+    <ul class="moments-grid">
       {% for item in collections.workItems %}
-        <li class="work-card">
+        <li class="moments-card">
           <a href="{{ item.data.href }}">
-            <div class="work-media">
+            <div class="moments-media">
               <img src="{{ item.data.image }}" alt="{{ item.data.imageAlt }}" loading="lazy" />
             </div>
-            <div class="work-meta">
+            <div class="moments-meta">
               <h3>{{ item.data.title }}</h3>
               {% if item.data.category %}<p class="muted">{{ item.data.category }}</p>{% endif %}
             </div>

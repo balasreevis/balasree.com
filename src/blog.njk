@@ -1,0 +1,48 @@
+---
+layout: base.njk
+title: Blog — balasree
+permalink: /blog/
+---
+
+<section class="section blog">
+  <div class="container blog-inner">
+    <header class="journey-head blog-head">
+      <div>
+        {% if blog.eyebrow %}<p class="eyebrow">{{ blog.eyebrow }}</p>{% endif %}
+        <h1>{{ blog.title }}</h1>
+        <p class="lead">{{ blog.intro }}</p>
+      </div>
+      <a class="rss-btn" href="/feed.xml" aria-label="Subscribe via RSS">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <circle cx="5" cy="19" r="2" fill="currentColor" />
+          <path d="M4 10a10 10 0 0 1 10 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          <path d="M4 4a16 16 0 0 1 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+        </svg>
+        Subscribe
+      </a>
+    </header>
+
+    <ul class="blog-list">
+      {% for post in collections.blogPosts %}
+        <li class="blog-list-item">
+          <a href="{{ post.url }}">
+            {% if post.data.image %}
+              <div class="blog-list-media">
+                <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt or '' }}" loading="lazy" />
+              </div>
+            {% endif %}
+            <div class="blog-list-meta">
+              <p class="timeline-year">{{ post.data.date | journeyDate }}</p>
+              <h2>{{ post.data.title }}</h2>
+              <p class="muted">{{ post.data.excerpt }}</p>
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% if blog.back %}
+      <p class="now-back"><a href="{{ blog.back.href }}">{{ blog.back.label }}</a></p>
+    {% endif %}
+  </div>
+</section>

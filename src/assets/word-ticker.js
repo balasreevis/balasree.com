@@ -39,6 +39,7 @@
 
     var order = shuffle(items.slice());
     var i = 0;
+    var timer = null;
 
     function typeNext() {
       var text = order[i];
@@ -47,9 +48,9 @@
         span.textContent = text.slice(0, pos);
         pos++;
         if (pos <= text.length) {
-          setTimeout(type, TYPE_MS);
+          timer = setTimeout(type, TYPE_MS);
         } else {
-          setTimeout(deleteCurrent, HOLD_MS);
+          timer = setTimeout(deleteCurrent, HOLD_MS);
         }
       })();
     }
@@ -61,7 +62,7 @@
         span.textContent = text.slice(0, pos);
         pos--;
         if (pos >= 0) {
-          setTimeout(del, DELETE_MS);
+          timer = setTimeout(del, DELETE_MS);
         } else {
           i++;
           if (i >= order.length) {
@@ -72,10 +73,19 @@
               order.push(order.shift());
             }
           }
-          setTimeout(typeNext, TYPE_MS);
+          timer = setTimeout(typeNext, TYPE_MS);
         }
       })();
     }
+
+    // Mobile browsers throttle or freeze setTimeout while the tab is
+    // backgrounded (app switch, screen lock), which can strand the ticker
+    // mid-word. Restart cleanly from the current word once visible again.
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) return;
+      clearTimeout(timer);
+      typeNext();
+    });
 
     typeNext();
   });

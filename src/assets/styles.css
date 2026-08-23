@@ -314,6 +314,7 @@ p { margin: 0 0 1rem; }
   color: var(--muted);
 }
 .described-by-ticker {
+  display: block;
   font-style: italic;
   color: var(--fg);
 }

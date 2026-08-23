@@ -1,6 +1,6 @@
 <section class="hero">
   <div class="hero-media">
-    <img src="{{ portfolio.hero.image }}" alt="{{ portfolio.hero.imageAlt }}" loading="eager" />
+    {% photo portfolio.hero.image, portfolio.hero.imageAlt, { loading: "eager", widths: [640, 1000, 1600, 2400, 3200] } %}
   </div>
   <div class="container">
     <div class="hero-text">

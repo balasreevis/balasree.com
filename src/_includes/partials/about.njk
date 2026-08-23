@@ -1,7 +1,7 @@
 <section class="section about" id="about">
   <div class="container about-inner">
     <div class="about-media">
-      <img src="{{ portfolio.about.image }}" alt="{{ portfolio.about.imageAlt }}" loading="lazy" />
+      {% photo portfolio.about.image, portfolio.about.imageAlt, { sizes: "(min-width: 720px) 45vw, 100vw" } %}
     </div>
     <div class="about-text">
       <h2>{{ portfolio.about.title }}</h2>

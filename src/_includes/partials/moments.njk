@@ -9,7 +9,7 @@
         <li class="moments-card">
           <a href="{{ item.data.href }}">
             <div class="moments-media">
-              <img src="{{ item.data.image }}" alt="{{ item.data.imageAlt }}" loading="lazy" />
+              {% photo item.data.image, item.data.imageAlt, { sizes: "(min-width: 720px) 380px, 100vw", objectPosition: item.data.imagePosition } %}
             </div>
             <div class="moments-meta">
               <h3>{{ item.data.title }}</h3>

@@ -28,7 +28,7 @@ permalink: /blog/
           <a href="{{ post.url }}">
             {% if post.data.image %}
               <div class="blog-list-media">
-                <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt or '' }}" loading="lazy" />
+                {% photo post.data.image, post.data.imageAlt, { sizes: "144px" } %}
               </div>
             {% endif %}
             <div class="blog-list-meta">

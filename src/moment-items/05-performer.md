@@ -1,8 +1,9 @@
 ---
 order: 5
-title: Tourist
-category: Hanoi
-image: "/assets/images/work-5.jpg"
+title: Performer
+category: BIC
+image: "/assets/images/performer.jpg"
+imagePosition: left
 imageAlt: Lorem ipsum project placeholder
 href: "#"
 ---

@@ -20,7 +20,7 @@ permalink: /journey/
           <div class="timeline-content">
             {% if entry.data.image %}
               <div class="timeline-media">
-                <img src="{{ entry.data.image }}" alt="{{ entry.data.imageAlt or '' }}" loading="lazy" />
+                {% photo entry.data.image, entry.data.imageAlt, { sizes: "(min-width: 720px) 44rem, 100vw" } %}
               </div>
             {% endif %}
             <h2>{{ entry.data.title }}</h2>

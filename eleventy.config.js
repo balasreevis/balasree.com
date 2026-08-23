@@ -1,5 +1,7 @@
 import matter from "gray-matter";
 import pluginRss from "@11ty/eleventy-plugin-rss";
+import Image from "@11ty/eleventy-img";
+import path from "node:path";
 
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
@@ -42,6 +44,50 @@ export default function (eleventyConfig) {
     if (!value || value.length <= maxLength) return value;
     const cut = value.slice(0, maxLength + 1);
     return cut.slice(0, cut.lastIndexOf(" ")).trim() + "…";
+  });
+
+  // Resizes and converts owner-supplied photos at build time so the browser
+  // never downloads more pixels than it'll actually show (source photos are
+  // often full camera-resolution, several MB each). Outputs WebP + a
+  // same-format fallback across a few widths, as a responsive <picture>.
+  // Local paths (e.g. "/assets/images/x.jpg") and remote URLs both work;
+  // if the source can't be fetched (e.g. a placeholder URL mid-edit), the
+  // shortcode falls back to a plain <img> instead of failing the build.
+  eleventyConfig.addAsyncShortcode("photo", async (src, alt, options = {}) => {
+    if (!src) return "";
+    const { className, loading = "lazy", sizes = "100vw", widths = [480, 800, 1200, 1800], objectPosition } = options;
+    const isRemote = /^https?:\/\//.test(src);
+    const inputPath = isRemote ? src : path.join("src", src);
+
+    let metadata;
+    try {
+      // Capped widths only (no `null`/original-resolution entry) — the
+      // point is to never ship a multi-MB camera-original to the browser.
+      // Quality is set explicitly above eleventy-img's defaults (which look
+      // visibly soft for photography) — still a large size win over
+      // untouched camera originals, just not at the cost of looking muddy.
+      metadata = await Image(inputPath, {
+        widths,
+        formats: ["webp", "jpeg"],
+        outputDir: "_site/assets/images/optimized",
+        urlPath: "/assets/images/optimized/",
+        sharpWebpOptions: { quality: 82 },
+        sharpJpegOptions: { quality: 85 },
+      });
+    } catch (e) {
+      return `<img src="${src}" alt="${alt || ""}" loading="${loading}"${className ? ` class="${className}"` : ""} />`;
+    }
+
+    const imageAttributes = {
+      alt: alt || "",
+      sizes,
+      loading,
+      decoding: loading === "eager" ? "sync" : "async",
+    };
+    if (className) imageAttributes.class = className;
+    if (objectPosition) imageAttributes.style = `object-position: ${objectPosition}`;
+
+    return Image.generateHTML(metadata, imageAttributes);
   });
 
   // Journey timeline entries, newest first (supports multiple entries per

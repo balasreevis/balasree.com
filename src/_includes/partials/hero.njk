@@ -5,11 +5,6 @@
   <div class="container">
     <div class="hero-text">
       <h1>{{ portfolio.hero.title }}</h1>
-      {% if portfolio.hero.subtitles %}
-        <p class="hero-subtitle" data-rotator data-items="{{ portfolio.hero.subtitles | dump | escape }}">
-          <span>{{ portfolio.hero.subtitles[0] }}</span>
-        </p>
-      {% endif %}
       <p class="lead">{{ portfolio.hero.subtitle }}</p>
       {% if portfolio.hero.cta %}
         <a class="btn" href="{{ portfolio.hero.cta.href }}">{{ portfolio.hero.cta.label }}</a>

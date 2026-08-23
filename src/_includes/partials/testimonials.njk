@@ -1,0 +1,30 @@
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <header class="section-head">
+      {% if portfolio.testimonials.describedBy %}
+        <h2 class="described-by">
+          Words I've been described by:
+          <span class="described-by-ticker" data-rotator data-items="{{ portfolio.testimonials.describedBy | dump | escape }}">
+            <span>{{ portfolio.testimonials.describedBy[0] }}</span>
+          </span>
+        </h2>
+      {% else %}
+        <h2>{{ portfolio.testimonials.title }}</h2>
+      {% endif %}
+      {% if portfolio.testimonials.subtitle %}<p class="muted">{{ portfolio.testimonials.subtitle }}</p>{% endif %}
+    </header>
+    <ul class="testimonial-grid">
+      {% for item in portfolio.testimonials.items %}
+        <li class="testimonial-card">
+          <blockquote>
+            {% for para in item.quote %}
+              <p>{{ para }}</p>
+            {% endfor %}
+          </blockquote>
+          <p class="testimonial-name">{{ item.name }}</p>
+          {% if item.role %}<p class="testimonial-role muted">{{ item.role }}</p>{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

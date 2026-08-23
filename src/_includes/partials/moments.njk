@@ -5,7 +5,7 @@
       {% if portfolio.moments.subtitle %}<p class="muted">{{ portfolio.moments.subtitle }}</p>{% endif %}
     </header>
     <ul class="moments-grid">
-      {% for item in collections.workItems %}
+      {% for item in collections.momentItems %}
         <li class="moments-card">
           <a href="{{ item.data.href }}">
             <div class="moments-media">

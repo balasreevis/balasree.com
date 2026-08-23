@@ -1,4 +1,4 @@
-// balasree.com — types out and deletes hero subtitles in random order, typewriter-style.
+// balasree.com — types out and deletes [data-rotator] word lists in random order, typewriter-style.
 (function () {
   "use strict";
 

@@ -54,12 +54,12 @@ export default function (eleventyConfig) {
       .sort((a, b) => String(b.data.date).localeCompare(String(a.data.date)));
   });
 
-  // Work grid items, in owner-defined order. Each item is a single
-  // Markdown file in src/work-items/ with a numeric `order` — add a file
+  // Moments grid items, in owner-defined order. Each item is a single
+  // Markdown file in src/moment-items/ with a numeric `order` — add a file
   // to add a project, no code changes needed.
-  eleventyConfig.addCollection("workItems", (collectionApi) => {
+  eleventyConfig.addCollection("momentItems", (collectionApi) => {
     return collectionApi
-      .getFilteredByTag("workItem")
+      .getFilteredByTag("momentItem")
       .sort((a, b) => Number(a.data.order) - Number(b.data.order));
   });
 
